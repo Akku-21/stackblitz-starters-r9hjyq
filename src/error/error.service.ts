@@ -11,26 +11,23 @@ export class ErrorService {
     formControlName: string,
     errors: [string, any][]
   ): string{
+
+    console.log(formControlName,  errors)
     switch (true) {
       case this.checkErrorType(errors, 'required'):
         return ERROR_MESSAGES['required'](formControlName);
-      case this.checkErrorType(errors, 'invalidYear'):
-        return ERROR_MESSAGES['invalidYear']();
-      case this.checkErrorType(errors, 'invalidDate'):
-        return ERROR_MESSAGES['invalidDate']();
-
-      case this.checkErrorType(errors, 'email'):
-        return ERROR_MESSAGES['email']();
-
-      case this.checkErrorType(errors, 'minlength'):
-        const minRequirement = this.getErrorMessage(
-          errors,
-          'minlength'
-        )?.requiredLength;
-        return ERROR_MESSAGES['minlength'](formControlName, minRequirement);
 
         case this.checkErrorType(errors, 'pattern'):
         return ERROR_MESSAGES['pattern'](formControlName);
+
+        // case this.checkErrorType(errors, 'Buchstabengruppe'):
+        // return ERROR_MESSAGES['Buchstabengruppe'](formControlName);
+
+        // case this.checkErrorType(errors, 'Erkennungsnummer'):
+        // return ERROR_MESSAGES['Erkennungsnummer'](formControlName);
+
+        case this.checkErrorType(errors, 'maxLength'):
+        return ERROR_MESSAGES['maxLength'](formControlName);
 
       default:
         return '';

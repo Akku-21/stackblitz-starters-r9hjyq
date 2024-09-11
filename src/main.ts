@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { KfzPlateComponent } from './kfz/kfz';
-import { KfzPlateComponent2 } from './kfz/plate';
+import { KennzeichenComponent } from './kennzeichen-component/kennzeichen-component.component';
 
 @Component({
   selector: 'app-root',
-  imports:[KfzPlateComponent,KfzPlateComponent2],
+  imports:[KennzeichenComponent],
   standalone: true,
   template: `
   <h1 class="text-3xl font-bold underline">kFz Test</h1>
-    <app-kfz-plate/>
+    <kennzeichen-component/>
   `,
 })
 export class App {

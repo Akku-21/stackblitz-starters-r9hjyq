@@ -1,0 +1,30 @@
+<form [formGroup]="plateForm" (change)="_onChange($event)" (blur)="_onTouched()">
+  <div class="flex flex-row gap-4 justify-center">
+
+    <input class="grow-0"
+     #part1Input formControlName="Ortskennzeichen" placeholder="M" uppercase maxLength="3"  app-invalid>
+
+    <input class="grow-0"
+     #part2Input formControlName="Buchstabengruppe" placeholder="AB" uppercase maxLength="2" app-invalid >
+
+    <input class="grow-0"
+     #part3Input formControlName="Erkennungsnummer" placeholder="1234" maxLength="4" app-invalid >
+
+     <select formControlName="part4" class="grow-0" app-invalid>
+      <option value=""></option>
+      <option value="E">E</option>
+      <option value="H">H</option>
+      </select>
+  </div>
+  <ul>
+  @for(error of errors; track error)
+  {
+  <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+    <p>{{error}}</p>
+  </div>
+    }
+</ul>
+  <div *ngIf="plateForm?.invalid && (plateForm?.dirty || plateForm?.errors)">
+    <p>Invalid number plate format</p>
+  </div>
+</form>

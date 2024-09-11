@@ -1,0 +1,14 @@
+  input {
+    margin: 5px;
+    padding: 5px;
+  }
+  p {
+    color: red;
+  }
+  input:user-invalid{
+    border-right: solid red
+  }
+
+  input:user-valid{
+    border-right: solid green;
+  }
