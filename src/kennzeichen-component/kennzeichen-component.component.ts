@@ -4,8 +4,6 @@ import {CommonModule} from '@angular/common';
 import { UpperCaseInputDirective } from '../directives/uppercase-directive';
 import { NumberRestricDirective } from '../directives/number-directive';
 import { InvalidDirective } from '../directives/invalid-directive';
-import { ShowErrorDirective } from '../error/show-error.directive';
-import { FormFieldComponent } from '../error/show-error-component';
 import { ErrorService } from '../error/error.service';
 
 
@@ -25,7 +23,7 @@ export function maxLength() {
 @Component({
   selector: 'kennzeichen-component',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, UpperCaseInputDirective, NumberRestricDirective, InvalidDirective, ShowErrorDirective, FormFieldComponent],
+  imports: [ReactiveFormsModule, CommonModule, UpperCaseInputDirective, NumberRestricDirective, InvalidDirective],
   templateUrl: './kennzeichen-component.component.html',
   styleUrl: './kennzeichen-component.component.css'
 })
@@ -37,8 +35,8 @@ export class KennzeichenComponent implements  ControlValueAccessor {
   plateForm: FormGroup;
 
   plateId = output<string>();
-  protected _onChange: any;
-  protected _onTouched: any;
+  protected _onChange = (event:any)  =>{console.log(event)};
+  protected _onTouched = (event:any) => {console.log(event)};
 
   constructor(private fb: FormBuilder) {
     this.plateForm = this.fb.group({
